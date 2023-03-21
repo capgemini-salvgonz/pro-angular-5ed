@@ -1,0 +1,59 @@
+<div class="card mb-4">
+  <div class="card-header">
+    <h2> Routing Components </h2>
+  </div>
+  <div class="card-body">
+    <h1 class="card-title">Descripción</h1>
+    <p class="card-text">
+      El RouterModule agrega directivas y proveedores para la navegación dentro de la aplicación
+      entre las vistas definidas en una aplicación.
+      Angular utilisa el servicio de enrutamiento para especificar de forma declarativa los
+      estados de la aplicación y administrar las transiciones de estado.
+    </p>
+    <a class="card-link" target="_blank" href="https://angular.io/api/router/RouterModule">Mas información...</a>
+  </div>
+  <div class="card-body">
+    <h1 class="card-title">Uso</h1>
+    <p class="card-text">
+      Puede importar este NgModule varias veces, una vez por cada paquete con carga diferida.
+      Sin embargo, solo un servicio de enrutador puede estar activo. Para garantizar esto,
+      hay dos formas de registrar rutas al importar este módulo:
+    </p>
+    <ul>
+      <li>El método forRoot() crea un NgModule que contiene todas las directivas, las rutas dadas y el propio servicio
+        de
+        enrutador.</li>
+      <li>El método forChild() crea un NgModule que contiene todas las directivas y las rutas dadas, pero no incluye el
+        servicio
+        de enrutador.</li>
+    </ul>
+  </div>
+
+  <div class="card-body">
+    <h1 class="card-title">Ejemplo</h1>
+    <div class="card-text">
+      <span style=" color:blue; white-space: pre; font-family: consolas; font-size: 0.75rem;">{{codeFragment}}</span>
+      <mat-divider class="mt-4 p-4"></mat-divider>
+      <h1 class="card-title">Html Template</h1>
+      <span style=" color:brown; white-space: pre; font-family: consolas; font-size: 0.75rem;">{{htmlTemplateCode}}</span>
+    </div>
+  </div>
+
+  <div class="row p-4">
+    <h1 class="card-title">Prueba</h1>
+    <div class="col">
+      <button mat-raised-button color="primary" routerLink="/router/a" class="mb-2">Componente A</button>
+      <button mat-raised-button color="primary" routerLink="/router/b" class="mb-2">Componente B</button>
+      <button mat-raised-button color="primary" routerLink="/router/c" class="mb-2">Componente C</button>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="card-body">
+    <h1 class="card-title">Ver código fuente</h1>
+    <div class="card-text">
+      <a class="card-link" target="_blank" href="https://angular.io/api/router/RouterModule">Github repository</a>
+    </div>
+  </div>
+
+</div>

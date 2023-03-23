@@ -10,6 +10,7 @@ import { MaterialModule } from "../modules/material.module";
  * Components
  */
 import { FormComponent } from "./forms/forms.component";
+import { HomeComponent } from "./home/home.component";
 import { NavBarComponent } from "./navBar/navBar.component";
 import { NgForComponent } from "./ngFor/ngFor.component";
 import { NgIfComponent } from "./ngIf/ngIf.component";
@@ -33,6 +34,7 @@ const components: any = [
 ];
 
 const router = RouterModule.forRoot([
+  { path: "home", component: HomeComponent },
   {
     path: "router",
     component: RoutingComponent,
@@ -46,7 +48,7 @@ const router = RouterModule.forRoot([
   { path: "if", component: NgIfComponent },
   { path: "for", component: NgForComponent },
   { path: "forms", component: FormComponent },
-  { path: "**", redirectTo: "router" },
+  { path: "**", redirectTo: "home" },
 ]);
 
 

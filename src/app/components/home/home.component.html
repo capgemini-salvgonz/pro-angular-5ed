@@ -15,8 +15,7 @@
     <p class="mt-4 content-description">
       Fig. 1. Espacio de trabajo en un proyecto nuevo.
     </p>
-    <img src={{angularImg}} style="width: 90%; height: auto;"
-      alt="angular" />
+    <img src={{angularImg}} style="width: 90%; height: auto;" alt="angular" />
     <p class="content-description">
       Tabla. 1. Descripción básica de archivos y directorios en un proyecto nuevo.
     </p>
@@ -56,8 +55,9 @@
           <td> <strong>tsconfig.app.json</strong> </td>
           <td>
             <p>
-              Este archivo contiene opciones de configuración adicional para el compilador de TypeScript, como la ubicación de 
-              los archivos de código fuente, definición de tipo de archivos y la ubicación de salida del compilador. 
+              Este archivo contiene opciones de configuración adicional para el compilador de TypeScript, como la
+              ubicación de
+              los archivos de código fuente, definición de tipo de archivos y la ubicación de salida del compilador.
             </p>
           </td>
         </tr>
@@ -65,8 +65,9 @@
           <td> <strong>angular.json</strong> </td>
           <td>
             <p>
-              Este archivo contiene opciones de configuración adicional para el compilador de TypeScript, como la ubicación de 
-              los archivos de código fuente, definición de tipo de archivos y la ubicación de salida del compilador. 
+              Este archivo contiene opciones de configuración adicional para el compilador de TypeScript, como la
+              ubicación de
+              los archivos de código fuente, definición de tipo de archivos y la ubicación de salida del compilador.
             </p>
           </td>
         </tr>
@@ -74,12 +75,75 @@
           <td> <strong>node_modules</strong> </td>
           <td>
             <p>
-              Este directorio contiene los paquetes NPM que serán requeridos por la aplicación y por las herramientas de desarrollo
-              de Angular. 
+              Este directorio contiene los paquetes NPM que serán requeridos por la aplicación y por las herramientas de
+              desarrollo
+              de Angular.
             </p>
           </td>
         </tr>
       </tbody>
     </table>
+    <h1 class="card-title">Proceso de construcción</h1>
+    <ul style="margin-right: auto; margin-left: 3rem; width: 90%;">
+      <li>
+        <p>
+          Cuando se ejecuta el comando <code>ng serve</code>, el proyecto se crea para que pueda ser utilizado por el
+          navegador.
+          Este es un proceso que requiere tres herramientas importantes: el compilador de TypeScript, el compilador de
+          Angular
+          y un paquete llamado <code>Webpack</code>.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Las aplicaciones de Angular se crean utilizando archivos TypeScript y plantillas HTML que contienen
+          expresiones,
+          ninguno de los cuales puede ser entendido por los navegadores. El compilador de TypeScript es responsable de
+          compilar los archivos TypeScript en JavaScript, y el compilador Angular es responsable de transformar las
+          plantillas en sentencias de JavaScript que usan las API del navegador para crear los elementos HTML en el
+          archivo
+          de plantilla y evaluar las expresiones que contienen.
+        </p>
+      </li>
+      <li>
+        <p>
+          El proceso de compilación se administra a través de <code>Webpack</code>, que es un package module, lo que
+          significa
+          que toma la salida compilada y la consolida en un módulo que se puede enviar al navegador. Este proceso es
+          conocido como empaquetado, que es una descripción bastante discreta para una función tan importante,
+          y es una de las herramientas clave en la que se confiará mientras se desarrolla con Angular,
+          no tenemos que profundizar ni ocuparnos de esta ya que, es administrada para nosotros por
+          las herramientas de desarrollo de Angular.
+        </p>
+      </li>
+      <li>
+        <p>
+          Cuando ejecuta el comando ng serve, se puede ver una serie de mensajes a medida que Webpack procesa la
+          solicitud. Webpack comienza con el código en el archivo <code>main.ts</code>, que es el punto de entrada para
+          la aplicación
+          (y que se especifica en el archivo <code>angular.json</code> )
+          y sigue las declaraciones de importación que contiene para descubrir sus dependencias, repitiendo este proceso
+          para cada archivo en el que hay una dependencia. Webpack se abre camino a través de las declaraciones de
+          importación, compilando cada TypeScript y archivo de plantilla en el que se declara una dependencia para
+          producir código
+          JavaScript para toda solicitud.
+        </p>
+      </li>
+      <li>
+        <p>
+          En el ejemplo mostrado en la Fig. 1. Webpack carga el archivo declarado en la propiedad
+          <code>"build.options.main":"src/main.ts"</code> que se encuentra dentro de la sección <code>architect</code>
+          del archivo
+          <code>angular.json</code>, el cuál contiene la dependencia de un <code>root-module</code> definido en el archivo de código
+          fuente
+          <code>app.module.ts</code> y este a su vez define un componente que se encuentra en el archivo
+          <code>app.main.ts</code>,
+          de esta manera Webpack hace todo el recorrido para poder compilar en cadena los fuentes necesarios y
+          finalmente poder usar
+          el selector llamado <code>app-main</code> del archivo <code>app.main.ts</code> dentro del archivo <code>index.html</code>
+        </p>
+      </li>
+    </ul>
   </div>
 </div>

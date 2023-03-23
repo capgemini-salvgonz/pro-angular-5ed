@@ -1,0 +1,85 @@
+<div class="card mb-4">
+  <h2 class="card-header">CONCEPTOS BÁSICOS</h2>
+  <div class="card-body">
+    <h1 class="card-title">Estructura simple de un proyecto Angular</h1>
+    <div class="card-text">
+      <p>La siguiente imagen describe los archivos y carpetas que se agregan a un nuevo proyecto mediante el comando
+        <code>ng new</code> y
+        que proporcionan el punto de partida para la mayoría de los desarrollos en Angular.
+      </p>
+      <p>
+        En esta imagen se reflejan algunos de configuración utilizados en tiempo de desarrollo, herramientas,
+        procesos y archivos de salida.
+      </p>
+    </div>
+    <p class="mt-4 content-description">
+      Fig. 1. Espacio de trabajo en un proyecto nuevo.
+    </p>
+    <img src={{angularImg}} style="width: 90%; height: auto;"
+      alt="angular" />
+    <p class="content-description">
+      Tabla. 1. Descripción básica de archivos y directorios en un proyecto nuevo.
+    </p>
+    <table class="w-100 table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>
+            <p>Archivo</p>
+          </th>
+          <th>
+            <p>Descripción</p>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <strong>package.json</strong> </td>
+          <td>
+            <p>
+              Este archivo contiene detalles de los paquetes NPM requeridos por la aplicación y las
+              herramientas de desarrollo y define en la sección de <strong>scripts</strong>
+              los comandos que ejecutan las herramientas de desarrollo (Angular CLI) como:
+              <code>ng build, ng serve, ng test. </code>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td> <strong>tsconfig.json</strong> </td>
+          <td>
+            <p>
+              Este archivo contiene los ajustes de configuración para el compilador de TypeScript. No se necesita
+              cambiar la configuración del compilador en la mayoría de los proyectos de Angular.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td> <strong>tsconfig.app.json</strong> </td>
+          <td>
+            <p>
+              Este archivo contiene opciones de configuración adicional para el compilador de TypeScript, como la ubicación de 
+              los archivos de código fuente, definición de tipo de archivos y la ubicación de salida del compilador. 
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td> <strong>angular.json</strong> </td>
+          <td>
+            <p>
+              Este archivo contiene opciones de configuración adicional para el compilador de TypeScript, como la ubicación de 
+              los archivos de código fuente, definición de tipo de archivos y la ubicación de salida del compilador. 
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td> <strong>node_modules</strong> </td>
+          <td>
+            <p>
+              Este directorio contiene los paquetes NPM que serán requeridos por la aplicación y por las herramientas de desarrollo
+              de Angular. 
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

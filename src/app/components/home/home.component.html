@@ -12,10 +12,12 @@
         procesos y archivos de salida.
       </p>
     </div>
+    <hr />
     <p class="mt-4 content-description">
       Fig. 1. Espacio de trabajo en un proyecto nuevo.
     </p>
     <img src={{angularImg}} style="width: 90%; height: auto;" alt="angular" />
+    <hr />
     <p class="content-description">
       Tabla. 1. Descripción básica de archivos y directorios en un proyecto nuevo.
     </p>
@@ -83,6 +85,7 @@
         </tr>
       </tbody>
     </table>
+    <hr />
     <h1 class="card-title">Proceso de construcción</h1>
     <ul style="margin-right: auto; margin-left: 3rem; width: 90%;">
       <li>
@@ -135,15 +138,93 @@
           En el ejemplo mostrado en la Fig. 1. Webpack carga el archivo declarado en la propiedad
           <code>"build.options.main":"src/main.ts"</code> que se encuentra dentro de la sección <code>architect</code>
           del archivo
-          <code>angular.json</code>, el cuál contiene la dependencia de un <code>root-module</code> definido en el archivo de código
+          <code>angular.json</code>, el cuál contiene la dependencia de un <code>root-module</code> definido en el
+          archivo de código
           fuente
           <code>app.module.ts</code> y este a su vez define un componente que se encuentra en el archivo
           <code>app.main.ts</code>,
           de esta manera Webpack hace todo el recorrido para poder compilar en cadena los fuentes necesarios y
           finalmente poder usar
-          el selector llamado <code>app-main</code> del archivo <code>app.main.ts</code> dentro del archivo <code>index.html</code>
+          el selector llamado <code>app-main</code> del archivo <code>app.main.ts</code> dentro del archivo
+          <code>index.html</code>
         </p>
       </li>
     </ul>
+    <hr />
+    <h1 class="card-title">Application Bundle</h1>
+    <p>
+      El proceso de compilación completo se realiza solo cuando se ejecuta por primera vez el comando
+      <code>ng serve</code>,
+      posteriormente, los paquetes se reconstruyen si alguno de los archivos que componen a la aplicación cambian.
+    </p>
+
+    <hr />
+    <p class="content-description">
+      Tabla. 2. Bundles producidos por el proceso de construcción de Angular.
+    </p>
+    <table class="w-100 table table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th>
+            <p>Archivo</p>
+          </th>
+          <th>
+            <p>Descripción</p>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <strong>main.js</strong> </td>
+
+          <td>
+            <p>
+              Este archivo contiene la salida de la compilación del directorio
+              <code>src/app</code>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td> <strong>polyfill.js</strong> </td>
+          <td>
+            <p>
+              Este archivo contiene los Polyfills de JavaScript
+              <code style="font-style:italic; color: darkred; font-size: 0.95rem;">
+                (fragmento de código que se utiliza
+                para proporcionar una funcionalidad moderna en navegadores antiguos que no lo admiten de forma
+                nativa)
+              </code>
+              requeridos por las características usada en la aplicación y que no son soportadas por el browser target.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td> <strong>runtime.js</strong> </td>
+          <td>
+            <p>
+              Este archivo contiene el código encargado de cargar otros módulos.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td> <strong>style.js</strong> </td>
+          <td>
+            <p>
+              Este archivo contiene código JavaScript que agrega las hojas de estilo CSS globales de la aplicación.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td> <strong>vendor.js</strong> </td>
+          <td>
+            <p>
+              Este archivo contiene los paquetes de terceros de los que depende la aplicación, incluyendo
+              los paquetes de Angular.
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
 </div>

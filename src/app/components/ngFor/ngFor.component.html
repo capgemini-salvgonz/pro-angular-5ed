@@ -1,1 +1,30 @@
-<h3>Ng For</h3>
+<div class="card mb-4">
+  <h2 class="card-header"> Ng For </h2>
+  <div class="card-body">
+    <h1 class="card-title">Descripción</h1>
+    <div class="card-body">
+
+      <!--
+        Tabla de productos
+      -->
+      <div class="card mb-4 w-75" *ngFor="let product of products">
+        <div class="card-header">
+          <p class="card-title">{{product.name}}</p>
+        </div>
+        <div class="card-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-1"> <img src="{{product.image}}" class="w-100"> </div>
+              <div class="col">
+                <p style="font-size: .8rem;">SKU:{{product.id}}</p>
+                Precio: {{product.price}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>

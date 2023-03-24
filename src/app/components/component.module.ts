@@ -7,6 +7,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from "@angular/router";
 import { MaterialModule } from "../modules/material.module";
 
+import { ProductService } from "../services/product.service";
+
 /**
  * Components
  */
@@ -59,6 +61,11 @@ const router = RouterModule.forRoot([
 @NgModule({
   declarations: [components],
   exports: [components],
-  imports: [MaterialModule, BrowserModule, router],
+  imports: [
+    MaterialModule, 
+    BrowserModule, 
+    router
+  ],
+  providers: [ProductService]
 })
 export class ComponentModule { }

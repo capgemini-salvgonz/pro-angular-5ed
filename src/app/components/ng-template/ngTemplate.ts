@@ -14,12 +14,12 @@ export class NgTemplate {
   ];
 
   getMessage(header: string = "Info") {
-    return [this.messages.find(m => m.header === header)];
+    return Array.of(this.messages.find(m => m.header === header));
   }
 
-  get cssClass(): string {
-    const style = 'bg-' + this.optionSelected.toLocaleLowerCase();
-    return this.optionSelected === 'Danger'
+  getClass(header: string = "Info"): string {
+    const style = 'bg-' + header.toLowerCase();
+    return header.toLowerCase() === 'danger'
     ? style + " text-white"
     : style;
   }

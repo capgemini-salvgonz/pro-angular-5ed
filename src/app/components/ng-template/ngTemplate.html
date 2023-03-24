@@ -1,0 +1,80 @@
+<div class="card mb-4">
+  <div class="card-header">
+    <h2>Ng-template</h2>
+  </div>
+  <div class="card-body">
+    <h1 class="card-title">Uso de la directiva ngTemplateOutlet</h1>
+    <div class="card-text">
+
+      <p>
+        La directiva ngTemplateOutlet se usa para repetir un bloque de contenido en una ubicación específica, que puede
+        ser útil cuando necesite generar el mismo contenido en diferentes lugares y desee evitar la duplicación.
+      </p>
+
+      <p>
+        En el siguiente ejemplo se reutiliza el contenido del ng-template y se personalizan los mensajes de acuerdo
+        a la opción seleccionada en la lista de opciones, así como también los estilos que se deben aplicar a cada uno 
+        de estos.
+      </p>
+
+      Selección de estilo para la plantilla de ejemplo: 
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Template</mat-label>
+        <mat-select [(value)]="optionSelected">
+          <mat-option value="Info">Info</mat-option>
+          <mat-option value="Warning">Warning</mat-option>
+          <mat-option value="Danger">Danger</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <ng-template *ngIf="optionSelected == 'Info'" [ngTemplateOutlet]="message"
+        [ngTemplateOutletContext]="{message: 'Info'}" />
+      <ng-template *ngIf="optionSelected == 'Warning'" [ngTemplateOutlet]="message"
+        [ngTemplateOutletContext]="{message: 'Warning'}" />
+      <ng-template *ngIf="optionSelected == 'Danger'" [ngTemplateOutlet]="message"
+        [ngTemplateOutletContext]="{message: 'Danger'}" />
+
+      <hr />
+      <p>
+        En el siguiente ejemplo se utiliza los mismos mensajes pero, sus estilos no cambian según el template
+        seleccionado.
+      </p>
+      <ng-template [ngTemplateOutlet]="message" [ngTemplateOutletContext]="{message: 'Info'}" />
+      <ng-template [ngTemplateOutlet]="message" [ngTemplateOutletContext]="{message: 'Warning'}" />
+      <ng-template [ngTemplateOutlet]="message" [ngTemplateOutletContext]="{message: 'Danger'}" />
+
+      <br />
+      <p >
+        De esta manera se prueba que se puede utilizar el mismo template, configurarlo para que su contenido sea
+        dinámico
+        y de igual manera aplicar un estilo (en este caso de color del encabezado) según sean necesarios y Ad-hoc a cada
+        mensaje.
+      </p>
+    </div>
+
+    <hr/>
+    <h1 class="card-title">Ver código fuente</h1>
+    <div >
+      <a class="card-link" target="_blank" href="https://github.com/capgemini-salvgonz/pro-angular-5ed">Github repository</a>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #message let-text="message">
+  <div *ngFor="let message of getMessage(text)">
+    <div class="w-75">
+      <div class="card">
+        <div class="card-header {{getClass(message?.header)}}">
+          <h2>{{message?.id}}-{{message?.header?.toUpperCase()}}</h2>
+        </div>
+        <div class="card-body">
+          <div class="card-title">
+            <h2>{{message?.title}}</h2>
+          </div>
+          <div class="card-text"> {{message?.message}} </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

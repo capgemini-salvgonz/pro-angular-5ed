@@ -1,0 +1,44 @@
+<div class="card mb-4">
+  <div class="card-header">
+    <h2>Ng-template</h2>
+  </div>
+  <div class="card-body">
+    <h1 class="card-title">Estructura simple de un proyecto Angular</h1>
+    <div class="card-text">
+
+      <mat-form-field appearance="fill">
+        <mat-label>Template</mat-label>
+        <mat-select [(value)]="optionSelected">
+          <mat-option value="Info">Info</mat-option>
+          <mat-option value="Warning">Warning</mat-option>
+          <mat-option value="Danger">Danger</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div>
+        <h3>Vista del template selecionado</h3>
+      </div>
+
+      <ng-template *ngIf="optionSelected == 'Info'" [ngTemplateOutlet]="message"
+        [ngTemplateOutletContext]="{message: 'Info'}" />
+      <ng-template *ngIf="optionSelected == 'Warning'" [ngTemplateOutlet]="message"
+        [ngTemplateOutletContext]="{message: 'Warning'}" />
+      <ng-template *ngIf="optionSelected == 'Danger'" [ngTemplateOutlet]="message"
+        [ngTemplateOutletContext]="{message: 'Danger'}" />
+    </div>
+  </div>
+</div>
+
+<ng-template #message let-text="message">
+  <div *ngFor="let message of getMessage(text)">
+    <div class="w-75">
+      <div class="card">
+        <div class="card-header {{cssClass}}"> <h2>{{message?.id}}-{{message?.header?.toUpperCase()}}</h2></div>
+        <div class="card-body">
+          <div class="card-title"> <h2>{{message?.title}}</h2> </div>
+          <div class="card-text"> {{message?.message}} </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

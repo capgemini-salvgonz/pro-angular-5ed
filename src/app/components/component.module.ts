@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
 
 /**
  * Modules
@@ -15,6 +16,7 @@ import { NavBarComponent } from "./navBar/navBar.component";
 import { NgForComponent } from "./ngFor/ngFor.component";
 import { NgIfComponent } from "./ngIf/ngIf.component";
 import { RoutingComponent } from "./routing/routing.component";
+import { NgTemplate } from "./ng-template/ngTemplate";
 
 /**
  * Child components
@@ -31,6 +33,7 @@ const components: any = [
   NgForComponent,
   NgIfComponent,
   RoutingComponent,
+  NgTemplate,
 ];
 
 const router = RouterModule.forRoot([
@@ -48,6 +51,7 @@ const router = RouterModule.forRoot([
   { path: "if", component: NgIfComponent },
   { path: "for", component: NgForComponent },
   { path: "forms", component: FormComponent },
+  { path: "ng-template", component: NgTemplate },
   { path: "**", redirectTo: "home" },
 ]);
 
@@ -55,6 +59,6 @@ const router = RouterModule.forRoot([
 @NgModule({
   declarations: [components],
   exports: [components],
-  imports: [MaterialModule, router],
+  imports: [MaterialModule, BrowserModule, router],
 })
 export class ComponentModule { }

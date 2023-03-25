@@ -25,20 +25,11 @@
         servicio
         de enrutador.</li>
     </ul>
-  </div>
-
-  <div class="card-body">
-    <h1 class="card-title">Ejemplo</h1>
-    <div class="card-text">
-      <span style=" color:blue; white-space: pre; font-family: consolas; font-size: 0.75rem;">{{codeFragment}}</span>
-      <mat-divider class="mt-4 p-4"></mat-divider>
-      <h1 class="card-title">Html Template</h1>
-      <span style=" color:brown; white-space: pre; font-family: consolas; font-size: 0.75rem;">{{htmlTemplateCode}}</span>
-    </div>
-  </div>
+    <code-viewer typeScript={{sourceCodes[0]}} templateHtml={{sourceCodes[1]}}></code-viewer>
+  </div>  
 
   <div class="row p-4">
-    <h1 class="card-title">Prueba</h1>
+    <h1 class="card-title">Ejemplo</h1>
     <div class="col">
       <button mat-raised-button color="primary" routerLink="/router/a" class="mb-2">Componente A</button>
       <button mat-raised-button color="primary" routerLink="/router/b" class="mb-2">Componente B</button>

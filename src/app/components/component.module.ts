@@ -13,12 +13,13 @@ import { ProductService } from "../services/product.service";
  * Components
  */
 import { FormComponent } from "./forms/forms.component";
+import { CodeViewer } from "./code-viewer/codeViewer.component";
 import { HomeComponent } from "./home/home.component";
 import { NavBarComponent } from "./navBar/navBar.component";
 import { NgForComponent } from "./ngFor/ngFor.component";
 import { NgIfComponent } from "./ngIf/ngIf.component";
-import { RoutingComponent } from "./routing/routing.component";
 import { NgTemplate } from "./ng-template/ngTemplate";
+import { RoutingComponent } from "./routing/routing.component";
 
 /**
  * Child components
@@ -30,12 +31,13 @@ import { CComponent } from "./routing/c.component";
 
 
 const components: any = [
+  CodeViewer,
   FormComponent,
   NavBarComponent,
   NgForComponent,
   NgIfComponent,
-  RoutingComponent,
   NgTemplate,
+  RoutingComponent,
 ];
 
 const router = RouterModule.forRoot([

@@ -2,10 +2,80 @@
   <h2 class="card-header"> Ng For </h2>
   <div class="card-body">
     <h1 class="card-title">Descripción</h1>
-    <div class="card-body">
+    <div class="card-text">
+
+      <p>La directiva ngFor repite una sección de contenido para cada objeto en una matriz, proporcionando
+        la plantilla equivalente a un bucle <code>foreach</code>.
+        El asterisco antes del nombre de la directiva indica que se trata de una directiva de microplantilla.</p>
+      <p>
+        Las variables más importantes son las que hace referencia al objeto de datos que se está procesando..
+        Pero la directiva ngFor admite una gama de otros valores que también pueden ser asignados a variables
+        y luego referidos dentro de los elementos HTML anidados, como se describe en la lista siguiente.
+      </p>
+
+      <p class="content-description">
+        Tabla. 1. Valores locales al Template.
+      </p>
+      <table class="w-100 table table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>
+              <p>Variable</p>
+            </th>
+            <th>
+              <p>Descripción</p>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> <strong>index</strong> </td>
+            <td>
+              <p>Este valor numérico es asignado a la posición del objeto actual </p>
+            </td>
+          </tr>
+          <tr>
+            <td> <strong>count</strong> </td>
+            <td>
+              <p>Este valor numérico es asignado al número de elementos en la fuente de datos</p>
+            </td>
+          </tr>
+          <tr>
+            <td> <strong>odd</strong> </td>
+            <td>
+              <p>Este es un valor booleano que es puesto en true si el objeto actual se encuentra en una posición impar dentro 
+                del data source
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td> <strong>even</strong> </td>
+            <td>
+              <p>Este es un valor booleano que es puesto en true si el objeto actual se encuentra en una posición par dentro 
+                del data source
+              </p>
+            </td>
+          <tr>
+            <td> <strong>first</strong> </td>
+            <td>
+              <p>Este es un valor booleano que es puesto en true si el objeto actual se encuentra al principio del data source
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td> <strong>last</strong> </td>
+            <td>
+              <p>Este es un valor booleano que es puesto en true si el objeto actual se encuentra al final del data source
+              </p>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
 
       <code-viewer typeScript={{sourceCodes[0]}} templateHtml={{sourceCodes[1]}}></code-viewer>
 
+      <h1 class="card-title">Ejemplo</h1>
       <!--
         Tabla de productos
       -->
@@ -48,7 +118,6 @@
           </div>
         </div>
       </div>
-
 
     </div>
   </div>

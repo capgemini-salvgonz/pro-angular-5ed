@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-// import { MaterialModule } from './modules/material.module';
 import { ComponentModule } from './components/component.module';
 
 
@@ -17,7 +16,6 @@ import { ComponentModule } from './components/component.module';
     BrowserModule,
     BrowserAnimationsModule,
     NgbModule,
-    // MaterialModule,
     ComponentModule,
   ],
   providers: [],

@@ -1,1 +1,255 @@
-<h3>Forms</h3>
+<div class="card mb-4">
+  <h2 class="card-header">Events & Forms</h2>
+  <div class="card-body">
+    <h1 class="card-title">Event Binding</h1>
+    <div class="card-text">
+      <p>
+        Los "event bindings" se usan para dar respuesta a un evento enviado por un
+        <code>host element</code>.
+        Para este tipo de vinculación de eventos, se debe tomar en cuenta los elementos
+        que participan en la estructura de vinculación <code>"&lt;th (mouseover)="productId=product.id /&gt;"</code>:
+      </p>
+      <ul>
+        <li> Host Element: <code>th</code>, es la fuente del evento vinculado </li>
+        <li> Event: <code>(mouseover)</code>, especifica para que evento se realiza la vinculación </li>
+        <li> Expression: <code>"productId=product.id"</code>, expresión evaluada cuando el evento
+          es disparado.</li>
+      </ul>
+
+      <p>
+        En el siguiente ejemplo, al mover el puntero del
+        mouse sobre la primera columna (Id) de la tabla html, se mostrará el nombre del producto
+        y se pintará de un color distinto toda la fila.
+      </p>
+      <div class="p-3 bg-primary text-white">
+        Producto seleccionado: <strong>{{selectedProduct?.name ?? '(None)'}}</strong>
+      </div>
+      <table class="table table-striped mb-4">
+        <thead>
+          <tr class="bg-dark text-white">
+            <th>Id</th>
+            <th>Producto</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products;" class={{isSelected(product)}}>
+            <th (mouseover)="productId=product.id">{{product.id}}</th>
+            <td>{{product.name}}</td>
+            <td>{{product.price}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h1>Event Data</h1>
+      <p>
+        En el siguiente ejemplo, se utiliza el evento (input), el cuál es detonado cada vez
+        que el campo de entrada cambia, en este caso el valor se almacena en la variable
+        <code>productId</code>, por lo tanto al coincidir con el id del producto,
+        la fila completa se pintara de un color y el encabezada mostrará el producto seleccionado.
+      </p>
+
+      <form class="mb-4">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Id Producto</label>
+          <input class="form-control" placeholder="Nombre del producto" (input)="productId=$any($event).target.value">
+        </div>
+      </form>
+
+      <p>
+        Cuando el navegador detona un evento, este provee un objeto Event que lo describe.
+        Hay diferentes tipos de eventos para diferentes categorías de eventos
+        (eventos del mouse, eventos del teclado, eventos de formulario, etc.), pero
+        todos los eventos comparten 3 propiedades que se describen a continuación.
+      </p>
+      <ul>
+        <li>
+          <strong>type:</strong> esta propiedad regresa un <code>string</code> que identifica
+          el tipo de evento que ha sido disparado
+        </li>
+        <li>
+          <strong>target:</strong> esta propiedad regresa un <code>object</code> que dispara el
+          evento, el cual es generalmente el objeto que representa el elemento HTML dentro del DOM
+        </li>
+        <li>
+          <strong>timeStamp:</strong> esta propiedad regresa un numero que contiene la fecha en
+          la que el evento fue lanzado, expresado en milisegundos desde Enero 1 de 1970
+        </li>
+      </ul>
+
+      <p>
+        En el ejemplo anterior, el textbox utiliza un evento llamado input
+        con la siguiente estructura dentro del elemento html input
+        <code>"(input)='productId=$any($event).target.value'",</code>
+        en donde el evento es asignado a una variable llamada <code>$event</code>.
+        Adicionalmente, Angular da un soporte especial a través de la función <code>$any</code>
+        que permite desactivar la verificación de tipos de typescript, trantado al objeto $event
+        como un valor especial de tipo <code>any</code>.
+      </p>
+
+      <h1 class="mt-4">Template Reference Variables</h1>
+      <p>
+        Las variables de referencia son formas de templates que pueden usarse como referencia a elementos dentro de un
+        template. Las variables referenciadas son definidas con el caracter # seguido el nombre de la variable.
+      </p>
+      <h1>Ejemplo</h1>
+      <code>
+      &lt;input class="form-control" placeholder="sku" (input)="false" <strong>#sku</strong> &gt;
+      <br>
+      &lt;input class="form-control" (input)="false" value=&#123;&#123;sku.value&#125; &#125; &gt;
+      </code>
+      <input class="form-control w-25 mt-2" placeholder="sku" (input)="false" #sku>
+      <input class="form-control w-25" (input)="false" value={{sku.value}}>
+
+      <h1 class="mt-4">Two ways Data Bindings</h1>
+      <p>
+        Los "Data Bindigns" se pueden combinar para crear un flujo de datos bidireccional para un solo elemento,
+        lo que permite que el documento HTML responda cuando cambia el modelo de la aplicación y también permite
+        que la aplicación responda cuando el elemento emite un evento.
+      </p>
+
+      <code-viewer typeScript={{sourceCodes[0]}} templateHtml={{sourceCodes[1]}}></code-viewer>
+
+      <h1>Ejemplo</h1>
+      <p>
+        En el siguiente ejemplo, cuando se da click sobre alguno de los botones de edición,
+        este servirá para vincular el objeto con el formulario de la derecha. El proceso de vinculación se realiza
+        en dos pasos, a través de la propiedad <code>[value]</code> se vincula el valor del formulario con el del objeto
+        seleccionado y a través del evento <code>(click)</code> los datos ingresados modifican al objeto seleccionado y
+        este
+        a su vez se ve reflejado en la tabla de la izquierda.
+      </p>
+      <p>Por otro lado, al no existir una vinculación o referencia hacia un objeto seleccionado de la tabla de la
+        izquierda,
+        el objeto vinculado al formulario se verá como un nuevo objeto, mismo que podra ser agregado al Array o
+        Datasource,
+        este se verá agregado una vez se de click en el botón "Guardar".
+      </p>
+
+      <div class="bg-dark text-white p-2">Lista de productos y edición de ellos</div>
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-6 bg-warning text-white">
+            <table class="table table-stripped">
+              <thead>
+                <tr>
+                  <th colspan="2">Producto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of products">
+                  <td>{{product.name}}</td>
+                  <td>
+                    <button type="button" class="btn btn-sm btn-primary" (click)="edit(product);">Editar</button>
+                  </td>
+                </tr>
+              </tbody>              
+            </table>
+          </div>
+          
+          <div class="col-6 bg-info">
+            <form (submit)="save()">
+              <div class="form-group">
+                <label for="id">Id</label>
+                <input class="form-control" id="id" type="text" [value]="product.id?? ''"
+                  (input)="product.id=$any($event).target.value" [disabled]="isEditing">
+              </div>
+              <div class="form-group">
+                <label for="name">Producto</label>
+                <input class="form-control" id="name" type="text" [value]="product.name?? ''"
+                  (input)="product.name=$any($event).target.value">
+              </div>
+              <div class="form-group">
+                <label for="price">Precio</label>
+                <input class="form-control" id="price" type="text" [value]="product.price?? ''"
+                  (input)="product.price=$any($event).target.value">
+              </div>
+              <button class="btn btn-warning mt-2" type="button" (click)="reset()">Reset</button>
+              <button *ngIf="!isEditing" class="btn btn-warning mt-2" type="submit">Guardar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="mt-4">Usando ngModel</h1>
+      <p>
+        La directiva ngModel se usa para simplificar los enlaces bidireccionales para que no se tenga que aplicar un evento
+        y una propiedad vinculante para el mismo elemento, como en el ejemplo anterior. En el siguiente ejemplo basta con 
+        utilizar la vinculación bidireccional de la siguiente forma: <code>[(ngModel)]="product.name"</code>, de esta manera al seleccionar
+        un producto para su edición se verá reflejado en el texbox siguiente y al actualizar su valor, este se verá reflejado
+        en la tabla y el formulario anterior.
+      </p>
+
+      <form >
+        <div class="form-group">
+          <label for="name">Producto</label>
+          <input class="form-control" id="name" type="text" [(ngModel)]="product.name" name="name">
+        </div>
+      </form>
+
+      <h1 class="card-title mt-4">Agregando validación de datos a un formulario</h1>
+      <p>
+        Angular provee un sistema extensible para validación del contenido de un elemento de formulario
+        basado en el enfoque usado por el estándard de HTML 5
+      </p>
+
+      <p class="content-description">
+        Tabla. 1. Atributos de validación.
+      </p>
+      <table class="w-100 table table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>
+              <p>Atributo</p>
+            </th>
+            <th>
+              <p>Descripción</p>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> <strong>email</strong> </td>
+            <td> <p>Este atributo es usado para especificar una dirección de email bien formada.</p> </td>
+          </tr>          
+          <tr>
+            <td> <strong>required</strong> </td>
+            <td> <p>Este atributo es usado para especificar que el valor debe ser proporcionado.</p> </td>
+          </tr>          
+          <tr>
+            <td> <strong>minlength</strong> </td>
+            <td> <p>Este atributo es usado para especificar el número mínimo de caracteres.</p> </td>
+          </tr>          
+          <tr>
+            <td> <strong>maxlength</strong> </td>
+            <td> <p>Este atributo es usado para especificar el número máximo de caracteres.</p> </td>
+          </tr>          
+          <tr>
+            <td> <strong>min</strong> </td>
+            <td> <p>Este atributo es usado para especificar un valor mínimo.</p> </td>
+          </tr>          
+          <tr>
+            <td> <strong>max</strong> </td>
+            <td> <p>Este atributo es usado para especificar un valor máximo.</p> </td>
+          </tr>          
+          <tr>
+            <td> <strong>pattern</strong> </td>
+            <td> <p>Este atributo es usado para especificar que el valor ingresado debe coincidir con una
+              expresión regular.</p> </td>
+          </tr>          
+        </tbody>
+      </table>
+
+      <h1>Ejemplo</h1>
+      <user-form></user-form>
+
+      <h1 class="card-title mt-4">Ver código fuente</h1>
+      <div class="card-text">
+        <a class="card-link" target="_blank" href="https://github.com/capgemini-salvgonz/pro-angular-5ed">
+          Github repository</a>
+      </div>
+
+    </div>
+  </div>
+</div>

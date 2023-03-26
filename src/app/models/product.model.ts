@@ -1,10 +1,10 @@
 export class Product {
-  id: string = "";
-  name: string = "";
-  price: number = 0;
-  image: string = "";
+  id: string | undefined = "";
+  name: string | undefined = "";
+  price: number | undefined = 0;
+  image: string | undefined = "";
 
-  constructor(id: string, name: string, price: number, image: string) {
+  constructor(id?: string, name?: string, price?: number, image?: string) {
     this.id = id;
     this.name = name;
     this.price = price;

@@ -1,11 +1,12 @@
 import { NgModule } from "@angular/core";
-import { BrowserModule } from '@angular/platform-browser';
 
 /**
  * Modules
  */
-import { RouterModule } from "@angular/router";
+import { BootstrapModule } from "../modules/bootstrap.module";
 import { MaterialModule } from "../modules/material.module";
+import { RouterModule } from "@angular/router";
+import { AngularModule } from "../modules/angular.module";
 
 import { ProductService } from "../services/product.service";
 
@@ -20,6 +21,7 @@ import { NgForComponent } from "./ngFor/ngFor.component";
 import { NgIfComponent } from "./ngIf/ngIf.component";
 import { NgTemplate } from "./ng-template/ngTemplate";
 import { RoutingComponent } from "./routing/routing.component";
+import { UserForm } from "./forms/user/userForm.component";
 
 /**
  * Child components
@@ -61,11 +63,12 @@ const router = RouterModule.forRoot([
 
 
 @NgModule({
-  declarations: [components],
+  declarations: [components, UserForm],
   exports: [components],
-  imports: [
-    MaterialModule, 
-    BrowserModule, 
+  imports: [     
+    AngularModule,
+    BootstrapModule,
+    MaterialModule,
     router
   ],
   providers: [ProductService]

@@ -6,9 +6,9 @@
         <form #myForm="ngForm" (ngSubmit)="submit(myForm)" >
           <div class="form-group">
             <label for="name">Nombre</label>
-            <input id="name" placeholder="Williams James" class="form-control" name="name" #name="ngModel"
-            ngModel required minlength="10">
-            <span style="color: red; font-size: 0.8rem;" *ngIf="!name.valid && isSubmited">Valor no válido</span>
+            <input id="name" placeholder="Williams James" class="form-control" 
+            name="name" #name="ngModel" ngModel required minlength="10">
+            <span style="color: red; font-size: 0.8rem;" *ngIf="name.invalid && isSubmited">Valor no válido</span>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
@@ -28,13 +28,18 @@
             name="zipCode" ngModel required>
             <span style="color: red; font-size: 0.8rem;" *ngIf="!zipCode.valid&&isSubmited">Valor no válido</span>
           </div>
-          <button class="btn btn-primary btn-sm mt-2" type="submit">Enviar</button>
+          <button class="btn btn-primary btn-sm mt-2" type="submit" 
+          [class.btn-dark]="isSubmited && myForm.invalid"
+          [disabled]="isSubmited && myForm.invalid" >Enviar</button>
         </form>
+
       </div>
     </div>
     <div class="col">
-      <h1>Datos enviados del formulario.</h1>
+      <h1>
+      Datos enviados del formulario.</h1>
       {{formSubmited}}
+      <span>ddd</span>
     </div>
   </div>
 </div>

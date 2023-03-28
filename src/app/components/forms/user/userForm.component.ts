@@ -24,11 +24,19 @@ export class UserForm {
 
   submit(ngForm : NgForm) {
     this.isSubmited = true;
-    this.user = ngForm.form.value;
-
     this.result = {
       isValid: ngForm.valid ?? false,
-      form: JSON.stringify(this.user)
+      form: JSON.stringify(ngForm.form.value)
     }
+
+    if(ngForm.valid) {
+      this.user = ngForm.form.value;
+      ngForm.reset();
+      this.isSubmited = false;
+    }
+  }
+
+  submitUser(ngForm: NgForm) {
+    console.log({user: this.user, ngForm});
   }
 }

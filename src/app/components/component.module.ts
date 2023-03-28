@@ -23,6 +23,7 @@ import { NgTemplate } from "./ng-template/ngTemplate";
 import { RoutingComponent } from "./routing/routing.component";
 import { UserForm } from "./forms/user/userForm.component";
 
+
 /**
  * Child components
  */
@@ -30,7 +31,7 @@ import { AComponent } from "./routing/a.component";
 import { BComponent } from "./routing/b.component";
 import { CComponent } from "./routing/c.component";
 
-
+import { InactivityDirective } from "../directives/inactivity.directive"; 
 
 const components: any = [
   CodeViewer,
@@ -40,6 +41,7 @@ const components: any = [
   NgIfComponent,
   NgTemplate,
   RoutingComponent,
+  InactivityDirective,
 ];
 
 const router = RouterModule.forRoot([

@@ -1,1 +1,30 @@
-<h3>NgIf Component</h3>
+<div class="card mb-4">
+  <h1 class="card-header">ngIf</h1>
+  <div class="card-body">
+    
+    <h1 class="card-title">Descripción</h1>
+    <div class="card-text">
+      <p>
+        ngIf es de las más simples directivas que se incluyen en Angular, 
+        esta es usada para incluir fragmentos de HTML en un documento cuando una expresión 
+        es evaluada como <code>true</code>.
+      </p>
+
+      <h1>Ejemplo</h1>
+      <code-viewer typeScript={{sourceCodes[0]}} templateHtml={{sourceCodes[1]}}></code-viewer>
+      
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Template</mat-label>
+        <mat-select [(value)]="optionSelected">
+          <mat-option value="Info">Show Message</mat-option>
+          <mat-option value="Ocultar">Ocultar</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div *ngIf="optionSelected == 'Info'">
+        Mensaje que se verá solo cuando la opción seleccionada es "Show Message"
+      </div>
+
+    </div>
+  </div>
+</div>

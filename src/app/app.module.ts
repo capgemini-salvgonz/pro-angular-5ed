@@ -7,11 +7,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { ComponentModule } from './components/component.module';
 
+import { XComponent } from './modules/moduleA/x.component';
+import { YComponent } from './modules/moduleB/y.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    XComponent,
+    YComponent,
   ],
   imports: [
     BrowserModule,

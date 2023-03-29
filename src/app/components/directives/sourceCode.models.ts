@@ -1,3 +1,8 @@
+
+
+export class Codes {
+  sourceCodes: string[] = [
+`
 import { Directive, Input, ElementRef, Output, EventEmitter } from '@angular/core';
 
 @Directive({
@@ -34,4 +39,16 @@ export class InactivityDirective {
     console.log("ngOnInit timeout", this.timeout);
     this.checkInactivity();
   }
+}
+`,
+`
+<div 
+  [inactivity]="timeStamp" 
+  [alertAt]="timeout"
+  [manageTimeout]="controlTimeout"
+  (mousemove)="onMouseMove()" >
+  <navigator></navigator>
+</div>
+`,
+  ];
 }

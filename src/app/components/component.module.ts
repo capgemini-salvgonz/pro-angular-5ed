@@ -22,7 +22,7 @@ import { NgIfComponent } from "./ngIf/ngIf.component";
 import { NgTemplate } from "./ng-template/ngTemplate";
 import { RoutingComponent } from "./routing/routing.component";
 import { UserForm } from "./forms/user/userForm.component";
-
+import { DirectiveComponent } from "./directives/directive.component";
 
 /**
  * Child components
@@ -42,6 +42,7 @@ const components: any = [
   NgTemplate,
   RoutingComponent,
   InactivityDirective,
+  DirectiveComponent,
 ];
 
 const router = RouterModule.forRoot([
@@ -60,6 +61,7 @@ const router = RouterModule.forRoot([
   { path: "for", component: NgForComponent },
   { path: "forms", component: FormComponent },
   { path: "ng-template", component: NgTemplate },
+  { path: "directives", component: DirectiveComponent },
   { path: "**", redirectTo: "home" },
 ]);
 

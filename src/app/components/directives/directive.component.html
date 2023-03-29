@@ -1,0 +1,31 @@
+<div class="card">
+  <h1 class="card-header">Directives</h1>
+  <div class="card-body">
+    <h1 class="card-title">Descripción</h1>
+    <div class="card-text">
+      <p>
+        Una directiva en Angular es una característica que nos permite extender la funcionalidad de un elemento HTML
+        existente o crear uno completamente nuevo, agregando ciertas capacidades dinámicas a la página. Las directivas
+        se utilizan para manipular el DOM, añadir atributos personalizados, crear componentes reutilizables y para
+        interactuar con datos, eventos y comportamientos del usuario en una aplicación Angular. La sintaxis básica para
+        definir una directiva en Angular es usando la función `@Directive` y especificando la propiedad `selector` para
+        indicar el elemento al que se aplicará. Por ejemplo:
+
+        Una vez definida, la directiva puede ser utilizada en el HTML como un atributo, elemento o clase.
+      </p>
+      <h1 class="card-title mt-4">Ejemplo</h1>
+      <p>
+        En el siguiente ejemplo, se creará una directiva
+        para detectar el evento (mousemove) y en caso de 
+        no tener actividad, se mostrará un mensaje en consola
+        de TIMEOUT en un tiempo que también se podrá especificar a través de
+        las propiedades <code>@Input</code> dentro de nuestra directiva.
+      </p>
+
+      <code-viewer 
+      typeScript={{sourceCodes[0]}}
+      templateHtml={{sourceCodes[1]}}>
+      </code-viewer>
+    </div>
+  </div>
+</div>

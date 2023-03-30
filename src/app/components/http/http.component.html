@@ -1,0 +1,31 @@
+<div class="card">
+  <h2 class="card-header">HTTP Request</h2>
+  <div class="card-body">
+    <h1 class="card-title">Descripción</h1>
+    <div class="card-text">
+      <p>
+        ASDQWER
+      </p>
+      
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Tipo de acciones</mat-label>
+        <mat-select [(value)]="optionSelected">
+          <mat-option *ngFor="let symbol of symbols" value={{symbol.symbol}}>
+            {{symbol.name}}
+          </mat-option>
+        </mat-select>        
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="button" class="mb-4"
+      (click)="submit()">Consultar</button>
+
+      <div class="card w-100">
+        <img class="card-img-top bg-info" src={{yahooFinanceModel.headerImage}} alt="finance service">
+        <div class="card-body">
+          <h1 class="card-title">Title</h1>
+          <div class="card-text">Price</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

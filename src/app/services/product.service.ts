@@ -1,8 +1,8 @@
-import { Inject } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Product } from "../models/product.model";
 
 
-@Inject({})
+@Injectable()
 export class ProductService {
   
   private productList: Product[] = [

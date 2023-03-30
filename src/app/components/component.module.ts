@@ -9,6 +9,7 @@ import { RouterModule } from "@angular/router";
 import { AngularModule } from "../modules/angular.module";
 
 import { ProductService } from "../services/product.service";
+import { YahooFinanceService } from "../services/yahoo.finance.service";
 
 /**
  * Components
@@ -23,6 +24,7 @@ import { NgTemplate } from "./ng-template/ngTemplate";
 import { RoutingComponent } from "./routing/routing.component";
 import { UserForm } from "./forms/user/userForm.component";
 import { DirectiveComponent } from "./directives/directive.component";
+import { HttpComponent } from "./http/http.component";
 
 /**
  * Child components
@@ -43,6 +45,7 @@ const components: any = [
   RoutingComponent,
   InactivityDirective,
   DirectiveComponent,
+  HttpComponent,
 ];
 
 const router = RouterModule.forRoot([
@@ -62,6 +65,7 @@ const router = RouterModule.forRoot([
   { path: "forms", component: FormComponent },
   { path: "ng-template", component: NgTemplate },
   { path: "directives", component: DirectiveComponent },
+  { path: "http-request", component: HttpComponent },
   { path: "**", redirectTo: "home" },
 ]);
 
@@ -75,6 +79,6 @@ const router = RouterModule.forRoot([
     MaterialModule,
     router
   ],
-  providers: [ProductService]
+  providers: [ProductService, YahooFinanceService]
 })
 export class ComponentModule { }

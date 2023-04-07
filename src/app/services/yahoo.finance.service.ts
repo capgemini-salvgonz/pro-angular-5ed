@@ -10,8 +10,7 @@ export interface Symbol {
 @Injectable()
 export class YahooFinanceService {
 
-  // private url: string = 'https://query1.finance.yahoo.com/v7/finance/spark';
-  private url: string = 'https://query1.finance.yahoo.com/v8/finance/chart';
+  private url: string = 'https://prxfibvc68.execute-api.us-west-1.amazonaws.com/development';
 
   availableSymbols: Symbol[] = [
     { name: "NASDAQ", symbol: "^IXI" },
@@ -26,11 +25,11 @@ export class YahooFinanceService {
   }
 
   getPrice(symbol: string): Observable<any> {
-    const uri = `${this.url}/${symbol}?interval=1mo&includePrePost=true`;
+    const uri = `${this.url}?symbol=${symbol}`;
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
 
-    return this.http.request("GET", uri);
+    return this.http.request("GET", uri, {headers});
   }
 }
